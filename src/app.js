@@ -8,6 +8,7 @@ var canvas = document.getElementById('screen');
 var game = new Game(canvas, update, render);
 var image = new Image();
 image.src = 'assets/pool_balls.png';
+var list = [];
 
 var pockets = [
   {x: 0, y: 0},
@@ -28,6 +29,7 @@ for(var i = 0; i < 18; i++){
     pocketed: false
   });
 }
+ball.sort(function)
 rack();
 
 /**
@@ -174,7 +176,22 @@ function update(elapsedTime) {
   });
 
   // check for ball collisions
+  balls.sort(function(a,b){return b.x - a.x});
+  var active = [];
+  balls.forEach(function(ball){
+    
+    active = active.filter(function(oball){
+      return oball.x < ball.x - 30;
+    });
+    active.forEach(function(oball){
+      potentiallyColliding.push({a: oball, b: ball});
+    });
+    active.push(ball);
+  });
   // TODO: Check for ball collisions
+  potentiallyColliding.forEach(funtion(pair){
+    
+  })
   // TODO: Process ball collisions
 }
 
